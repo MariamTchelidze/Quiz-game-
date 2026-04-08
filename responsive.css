@@ -1,0 +1,162 @@
+@media (max-width: 1355px) {
+  .game-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tree {
+    width: 100%;
+    max-width: 80rem;
+    min-height: unset;
+  }
+
+  #quizBox {
+    width: 100%;
+    margin-top: 2rem;
+    align-self: center;
+  }
+
+  /* #livesContainer {
+
+    height: 6rem;
+   
+    justify-conten: center;
+  } */
+}
+@media (max-width: 992px) {
+  .game-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .tree {
+    width: 90%;
+    max-width: 70rem;
+    height: auto;
+    aspect-ratio: 1000 / 700;
+  }
+
+  #quizBox {
+    width: 90%;
+    align-self: center;
+  }
+
+  #livesContainer {
+    position: static;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+}
+
+/* mobile breakpoint */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.4rem;
+  }
+
+  .game-container {
+    gap: 2rem;
+  }
+
+  .tree {
+    width: 95%;
+  }
+
+  #quizBox {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .level {
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 1.4rem;
+  }
+
+  #frodo img {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .life {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+}
+@media (max-width: 768px) {
+  #quizBox {
+    position: static;
+    margin-top: 2rem;
+    width: 90%;
+  }
+
+  .game-container {
+    align-items: center;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2.2rem;
+    padding: 0 1rem;
+  }
+
+  .tree {
+    width: 100%;
+  }
+
+  #quizBox {
+    width: 95%;
+    padding: 1.2rem;
+  }
+
+  .level {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.2rem;
+  }
+
+  #frodo img {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  .life {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+@media (max-width: 320px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  #quizBox {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .level {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.1rem;
+  }
+
+  #frodo img {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .life {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}

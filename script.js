@@ -32,45 +32,45 @@ function startGame() {
 }
 // Level positioning on tree:
 const positions = [
-  { x: 500, y: 620 }, // 1
+  { x: 50, y: 88 },
 
-  { x: 350, y: 600 },
-  { x: 650, y: 600 }, // 2-3
+  { x: 35, y: 85 },
+  { x: 65, y: 85 },
 
-  { x: 250, y: 550 },
-  { x: 750, y: 550 }, // 4-5
+  { x: 25, y: 78 },
+  { x: 75, y: 78 },
 
-  { x: 400, y: 500 },
-  { x: 600, y: 500 }, // 6-7
+  { x: 40, y: 70 },
+  { x: 60, y: 70 },
 
-  { x: 200, y: 450 },
-  { x: 800, y: 450 }, // 8-9
+  { x: 20, y: 64 },
+  { x: 80, y: 64 },
 
-  { x: 350, y: 400 },
-  { x: 650, y: 400 }, // 10-11
+  { x: 35, y: 57 },
+  { x: 65, y: 57 },
 
-  { x: 150, y: 350 },
-  { x: 850, y: 350 }, // 12-13
+  { x: 15, y: 50 },
+  { x: 85, y: 50 },
 
-  { x: 300, y: 300 },
-  { x: 700, y: 300 }, // 14-15
+  { x: 30, y: 43 },
+  { x: 70, y: 43 },
 
-  { x: 450, y: 300 },
-  { x: 670, y: 210 }, // 16-17
+  { x: 45, y: 43 },
+  { x: 67, y: 30 },
 
-  { x: 350, y: 200 },
-  { x: 250, y: 200 }, // 18-19
+  { x: 35, y: 28 },
+  { x: 25, y: 28 },
 
-  { x: 500, y: 150 }, // 20
+  { x: 50, y: 20 },
 
-  { x: 200, y: 110 },
-  { x: 700, y: 110 }, // 21-22
+  { x: 20, y: 15 },
+  { x: 70, y: 15 },
 
-  { x: 300, y: 70 }, // 23
+  { x: 30, y: 10 },
 
-  { x: 650, y: 70 }, // 24
+  { x: 65, y: 10 },
 
-  { x: 500, y: 30 }, // 25
+  { x: 50, y: 8 },
 ];
 
 // Levels:
@@ -78,8 +78,8 @@ positions.forEach((pos, i) => {
   const lvl = document.createElement("div");
   lvl.classList.add("level");
   lvl.textContent = i + 1;
-  lvl.style.left = pos.x + "px";
-  lvl.style.top = pos.y + "px";
+  lvl.style.left = pos.x + "%";
+  lvl.style.top = pos.y + "%";
   lvl.onclick = () => {
     if (i <= unlockedLevel) {
       goToLevel(i);
@@ -92,8 +92,8 @@ positions.forEach((pos, i) => {
 function goToLevel(index) {
   currentLevel = index;
   const pos = positions[index];
-  frodo.style.left = pos.x + 30 + "px";
-  frodo.style.top = pos.y + 25 + "px";
+  frodo.style.left = pos.x + "%";
+  frodo.style.top = pos.y + "%";
   highlightLevel(index);
   showQuestion(index);
 }
@@ -264,7 +264,7 @@ const questions = [
   },
 ];
 
-/* SHOW */
+// Questions changer
 function showQuestion(index) {
   const q = questions[index];
   answered = false;
@@ -336,7 +336,7 @@ function updateLivesUI() {
     warning.classList.remove("hidden");
   }
 }
-// Sauron Wins - The game is over:
+// Sauron Wins - The game is over: pop up window
 function showGameOver() {
   quizBox.classList.add("hidden");
   document.getElementById("lotrGameOver").classList.remove("hidden");
@@ -351,23 +351,22 @@ function resetGame() {
   unlockedLevel = 0;
   lives = 2;
 
-  //  Frodo Live boxes changes
+  //  Samwise Live boxes changes
   const livesEls = document.querySelectorAll(".life");
   livesEls.forEach((el) => el.classList.remove("lost"));
 
-  /* ⚠️ warning ტექსტიც დავმალოთ */
+  //  after losing hiding the warning text
   document.getElementById("warningText").classList.add("hidden");
-
   highlightLevel(0);
   goToLevel(0);
 }
 
-/* WIN */
+// Winner's pop up window
 function showWin() {
   quizBox.classList.add("hidden");
   document.getElementById("lotrWin").classList.remove("hidden");
 }
 
-/* START */
+// Game starting
 highlightLevel(0);
 goToLevel(0);
