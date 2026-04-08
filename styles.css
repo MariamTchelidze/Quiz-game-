@@ -115,6 +115,9 @@ h1 {
 
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
 }
+#quizBox {
+  backdrop-filter: blur(6px);
+}
 
 /* CODE BLOCK */
 #code {
@@ -245,4 +248,63 @@ button:disabled {
 }
 .lotr-box button:hover {
   background: #5a4632;
+}
+
+/* Winner */
+#lotrWin {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.9), rgba(20, 20, 0, 0.9));
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+}
+
+#lotrWin:not(.hidden) {
+  display: flex;
+}
+
+/* ცოტა უფრო bright glow */
+#lotrWin .lotr-box {
+  box-shadow: 0 0 40px rgba(224, 195, 109, 0.7);
+}
+/* ჩვეულებრივი ტექსტი */
+.lotr-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #e0c36d;
+  opacity: 0.9;
+}
+
+/* 🔥 მთავარი ფრაზა */
+.lotr-hero-line {
+  margin-top: 20px;
+
+  font-size: 32px; /* 👈 ბევრად დიდი */
+  font-weight: bold;
+
+  color: #f5e6b0;
+
+  text-shadow:
+    0 0 10px gold,
+    0 0 20px rgba(224, 195, 109, 0.8),
+    0 0 40px rgba(224, 195, 109, 0.6);
+
+  letter-spacing: 1px;
+}
+.aragorn-img {
+  width: 260px;
+
+  object-fit: contain;
+
+  filter: drop-shadow(0 0 20px rgba(224, 195, 109, 0.4));
+
+  margin-right: 10px;
 }
