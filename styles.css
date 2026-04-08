@@ -1,0 +1,248 @@
+body {
+  margin: 0;
+  background: #0b0a09;
+  color: #e5e5e5;
+  font-family: monospace;
+  text-align: center;
+}
+
+h1 {
+  color: #c2a85c;
+}
+
+/* 🌳 TREE CONTAINER */
+.tree {
+  position: relative;
+  width: 1000px;
+  height: 700px;
+  margin: 40px auto;
+
+  /* 👉 შენი ხის სურათი */
+  background: url("./assets/images/Mission-Tree.png") center center / contain
+    no-repeat;
+}
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+}
+/* 🔢 LEVELS LAYER */
+#levels {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+/* LEVEL NODE */
+.level {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50%;
+  background: rgba(20, 15, 10, 0.95); /* 👈 უფრო მუქი */
+
+  border: 2px solid #e0c36d; /* 👈 უფრო ნათელი ოქროსფერი */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #f5e6b0; /* 👈 ნათელი ტექსტი */
+  font-weight: bold;
+  font-size: 16px;
+
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8); /* 👈 მკვეთრი */
+
+  box-shadow: 0 0 12px rgba(194, 168, 92, 0.5); /* glow */
+
+  cursor: pointer;
+}
+
+.level:hover {
+  transform: scale(1.1);
+}
+
+/* ACTIVE LEVEL */
+.level.active {
+  background: #e0c36d;
+  color: black;
+  box-shadow: 0 0 15px rgba(224, 195, 109, 0.9);
+}
+
+/* LOCKED */
+.locked {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* 🧝 PLAYER */
+#detective {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: 0.4s ease;
+}
+
+#detective img {
+  width: 60px;
+  height: 60px;
+
+  object-fit: cover;
+
+  /* 👇 მთავარი fix */
+  object-position: center 20%;
+  /* სცადე 20%–40% სანამ იდეალურად დაჯდება */
+
+  border-radius: 50%;
+  border: 2px solid #c2a85c;
+
+  box-shadow: 0 0 10px rgba(194, 168, 92, 0.6);
+}
+/* OPTIONAL: GLOW EFFECT */
+#detective {
+  filter: drop-shadow(0 0 6px rgba(194, 168, 92, 0.6));
+}
+/* QUIZ BOX */
+#quizBox {
+  width: 380px;
+  background: #1a1816;
+  padding: 20px;
+  border-radius: 12px;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+/* CODE BLOCK */
+#code {
+  background: #000;
+  color: #e0c36d;
+
+  padding: 10px;
+  border-radius: 8px;
+
+  margin-bottom: 15px;
+}
+
+/* QUESTION */
+#question {
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+/* ANSWERS */
+#answers button {
+  width: 100%;
+  margin: 6px 0;
+  padding: 10px;
+
+  background: #3b2f2f;
+  color: #fff;
+
+  border: none;
+  border-radius: 6px;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#answers button:hover {
+  background: #5a4632;
+}
+
+/* STATES */
+.correct {
+  background: green !important;
+}
+
+.wrong {
+  background: red !important;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* BACKDROP */
+#lotrGameOver {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.85);
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+
+  display: none; /* 👈 მთავარი */
+}
+
+/* როცა გამოჩნდება */
+#lotrGameOver:not(.hidden) {
+  display: flex;
+}
+/* BOX */
+/* BOX BIGGER + FLEX */
+.lotr-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  width: 700px; /* 👈 გაიზარდა */
+  padding: 40px;
+
+  background: linear-gradient(145deg, #1a1816, #0b0a09);
+  border-radius: 14px;
+  border: 2px solid #c2a85c;
+
+  box-shadow: 0 0 30px rgba(194, 168, 92, 0.4);
+}
+.sauron-img {
+  width: 200px;
+
+  opacity: 0.9;
+
+  filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.4));
+}
+/* TEXT */
+.lotr-content {
+  flex: 1;
+  text-align: center;
+}
+
+.lotr-content h2 {
+  color: #e0c36d;
+  font-family: serif;
+  line-height: 1.6;
+
+  text-shadow: 0 0 10px rgba(224, 195, 109, 0.6);
+}
+/* BUTTON */
+.lotr-box button {
+  margin-top: 20px;
+  padding: 10px 20px;
+
+  background: #3b2f2f;
+  color: #fff;
+
+  border: 1px solid #c2a85c;
+  border-radius: 6px;
+
+  cursor: pointer;
+}
+.hidden {
+  display: hidden;
+}
+.lotr-box button:hover {
+  background: #5a4632;
+}

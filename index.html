@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Detective Debugging</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Legolass - the one, who sees</h1>
+
+    <div class="game-container">
+      <div class="tree">
+        <div id="levels"></div>
+
+        <div id="detective">
+          <img src="./assets/images/elf.jpg" />
+        </div>
+      </div>
+
+      <!-- 👉 QUIZ აქ -->
+      <div id="quizBox">
+        <pre id="code"></pre>
+        <h3 id="question"></h3>
+        <div id="answers"></div>
+      </div>
+    </div>
+
+    <!-- pop up -->
+
+    <div id="lotrGameOver" class="hidden">
+      <div class="lotr-box">
+        <!-- 🧿 SAURON LEFT -->
+        <img src="./assets/images/sauron.png" class="sauron-img" />
+
+        <!-- TEXT SIDE -->
+        <div class="lotr-content">
+          <h2>
+            Then it has all been in vain.<br />
+            The fellowship has failed.
+          </h2>
+
+          <button onclick="resetGame()">Try Again</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
