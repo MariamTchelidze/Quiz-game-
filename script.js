@@ -13,6 +13,22 @@ let currentLevel = 0;
 let unlockedLevel = 0;
 let answered = false;
 
+// Introscreen
+function startGame() {
+  const intro = document.getElementById("introScreen");
+
+  intro.style.opacity = "0";
+
+  setTimeout(() => {
+    intro.style.display = "none";
+
+    const game = document.getElementById("game");
+    game.classList.remove("hidden");
+  }, 400);
+
+  highlightLevel(0);
+  goToLevel(0);
+}
 /* POSITIONS */
 const positions = [
   { x: 500, y: 650 }, // 1
