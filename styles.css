@@ -308,3 +308,142 @@ button:disabled {
 
   margin-right: 10px;
 }
+.aragorn-img {
+  animation: aragornGlow 2s infinite alternate;
+}
+
+@keyframes aragornGlow {
+  from {
+    filter: drop-shadow(0 0 10px rgba(224, 195, 109, 0.3));
+  }
+  to {
+    filter: drop-shadow(0 0 30px rgba(224, 195, 109, 0.7));
+  }
+}
+/*  Intro */
+#introScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.95),
+    rgba(10, 10, 10, 0.9)
+  );
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+/* BOX */
+.intro-box {
+  width: 600px;
+  padding: 40px;
+
+  background: linear-gradient(145deg, #1a1816, #0b0a09);
+
+  border-radius: 14px;
+  border: 2px solid #c2a85c;
+
+  text-align: center;
+
+  box-shadow: 0 0 40px rgba(224, 195, 109, 0.4);
+}
+
+/* TITLE */
+.intro-box h1 {
+  color: #e0c36d;
+  margin-bottom: 20px;
+}
+
+/* TEXT */
+.intro-text {
+  color: #d6c08a;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* LINKS */
+/* CONTAINER */
+.intro-links {
+  margin: 25px 0;
+  text-align: left;
+}
+
+/* LINK */
+.intro-links a {
+  position: relative;
+  display: block;
+
+  margin: 10px 0;
+  padding-left: 35px;
+  text-align: left;
+
+  font-size: 15px;
+  color: #e0c36d;
+
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+/* 💍 RING BEFORE */
+.intro-links a::before {
+  content: "◯"; /* ring-like */
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  font-size: 18px;
+  color: #c2a85c;
+
+  text-shadow: 0 0 8px rgba(224, 195, 109, 0.7);
+}
+
+/* ✨ HOVER EFFECT */
+.intro-links a:hover {
+  transform: scale(1.05);
+  color: #f5e6b0;
+
+  text-shadow: 0 0 10px rgba(224, 195, 109, 0.8);
+}
+
+/* 💍 RING GLOW ON HOVER */
+.intro-links a:hover::before {
+  text-shadow: 0 0 15px gold;
+}
+.intro-links a::after {
+  content: "";
+  position: absolute;
+  left: 35px;
+  bottom: -2px;
+
+  width: 0%;
+  height: 1px;
+
+  background: gold;
+  transition: 0.3s;
+}
+
+.intro-links a:hover::after {
+  width: 80%;
+}
+/* BUTTON */
+.intro-box button {
+  margin-top: 20px;
+  padding: 10px 20px;
+
+  background: #3b2f2f;
+  color: #fff;
+
+  border: 1px solid #c2a85c;
+  border-radius: 6px;
+
+  cursor: pointer;
+}
