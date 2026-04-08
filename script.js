@@ -1,5 +1,5 @@
 const levelsContainer = document.getElementById("levels");
-const detective = document.getElementById("detective");
+const frodo = document.getElementById("frodo");
 
 const quizBox = document.getElementById("quizBox");
 const codeEl = document.getElementById("code");
@@ -12,8 +12,9 @@ const gameOverScreen = document.getElementById("gameOver");
 let currentLevel = 0;
 let unlockedLevel = 0;
 let answered = false;
+let lives = 3;
 
-// Introscreen
+// Introduction pop-up:
 function startGame() {
   const intro = document.getElementById("introScreen");
 
@@ -29,9 +30,9 @@ function startGame() {
   highlightLevel(0);
   goToLevel(0);
 }
-/* POSITIONS */
+// Level positioning on tree:
 const positions = [
-  { x: 500, y: 650 }, // 1
+  { x: 500, y: 620 }, // 1
 
   { x: 350, y: 600 },
   { x: 650, y: 600 }, // 2-3
@@ -54,55 +55,50 @@ const positions = [
   { x: 300, y: 300 },
   { x: 700, y: 300 }, // 14-15
 
-  { x: 450, y: 250 },
-  { x: 550, y: 250 }, // 16-17
+  { x: 450, y: 300 },
+  { x: 670, y: 210 }, // 16-17
 
   { x: 350, y: 200 },
-  { x: 650, y: 200 }, // 18-19
+  { x: 250, y: 200 }, // 18-19
 
   { x: 500, y: 150 }, // 20
 
-  { x: 400, y: 110 },
-  { x: 600, y: 110 }, // 21-22
+  { x: 200, y: 110 },
+  { x: 700, y: 110 }, // 21-22
 
-  { x: 450, y: 70 }, // 23
+  { x: 300, y: 70 }, // 23
 
-  { x: 550, y: 70 }, // 24 🆕
+  { x: 650, y: 70 }, // 24
 
-  { x: 500, y: 30 }, // 25 🆕 (top boss level)
+  { x: 500, y: 30 }, // 25
 ];
-/* CREATE LEVELS */
+
+// Levels:
 positions.forEach((pos, i) => {
   const lvl = document.createElement("div");
   lvl.classList.add("level");
   lvl.textContent = i + 1;
-
   lvl.style.left = pos.x + "px";
   lvl.style.top = pos.y + "px";
-
   lvl.onclick = () => {
     if (i <= unlockedLevel) {
       goToLevel(i);
     }
   };
-
   levelsContainer.appendChild(lvl);
 });
 
-/* MOVE */
+// frodo mover to next level:
 function goToLevel(index) {
   currentLevel = index;
-
   const pos = positions[index];
-
-  detective.style.left = pos.x + 30 + "px";
-  detective.style.top = pos.y + 25 + "px";
-
+  frodo.style.left = pos.x + 30 + "px";
+  frodo.style.top = pos.y + 25 + "px";
   highlightLevel(index);
   showQuestion(index);
 }
 
-/* HIGHLIGHT */
+// level circle highlight:
 function highlightLevel(index) {
   document.querySelectorAll(".level").forEach((lvl, i) => {
     lvl.classList.toggle("active", i === index);
@@ -114,18 +110,12 @@ function highlightLevel(index) {
     }
   });
 }
-
-/* QUESTIONS */
+// 25 Question:
 const questions = [
   {
     code: "<h1>Hello</h2>",
     question: "What is wrong?",
-    options: [
-      "Wrong closing tag",
-      "Missing attribute",
-      "Wrong element",
-      "Nothing",
-    ],
+    options: ["Wrong closing tag", "Missing attribute", "Wrong element", "Nothing"],
     answer: 0,
   },
   {
@@ -257,12 +247,7 @@ const questions = [
   {
     code: ".container { display:flex } .child { margin:auto }",
     question: "Result?",
-    options: [
-      "Centers element",
-      "Wrong selector",
-      "Missing padding",
-      "Nothing",
-    ],
+    options: ["Centers element", "Wrong selector", "Missing padding", "Nothing"],
     answer: 0,
   },
   {
@@ -282,43 +267,34 @@ const questions = [
 /* SHOW */
 function showQuestion(index) {
   const q = questions[index];
-
   answered = false;
-
   quizBox.classList.remove("hidden");
-
   codeEl.textContent = q.code;
   questionEl.textContent = q.question;
   answersEl.innerHTML = "";
-
   q.options.forEach((opt, i) => {
     const btn = document.createElement("button");
     btn.textContent = opt;
-
     btn.onclick = () => checkAnswer(btn, i, index);
-
     answersEl.appendChild(btn);
   });
 }
 
-/* CHECK */
-function checkAnswer(btn, selected, index) {
+// Answer Checker: true/false
+function checkAnswer(btn, selected) {
   if (answered) return;
-
   answered = true;
-
-  const correct = questions[index].answer;
+  const correct = questions[currentLevel].answer;
   const buttons = answersEl.querySelectorAll("button");
-
   buttons.forEach((b) => (b.disabled = true));
-
   if (selected === correct) {
     btn.classList.add("correct");
 
     if (currentLevel === unlockedLevel) unlockedLevel++;
 
     setTimeout(() => {
-      /* 🔥 აქ ხდება WIN CHECK */
+      answered = false;
+
       if (currentLevel === positions.length - 1) {
         showWin();
       } else {
@@ -329,24 +305,58 @@ function checkAnswer(btn, selected, index) {
     btn.classList.add("wrong");
     buttons[correct].classList.add("correct");
 
+    lives--;
+    updateLivesUI();
+
     setTimeout(() => {
-      showGameOver();
-    }, 1000);
+      if (lives === 0) {
+        showGameOver();
+      } else {
+        answered = false;
+        goToLevel(currentLevel + 1);
+      }
+    }, 800);
   }
 }
+// lives tracker
+function updateLivesUI() {
+  const livesEls = document.querySelectorAll(".life");
 
-/* GAME OVER */
+  livesEls.forEach((el, index) => {
+    if (index >= lives) {
+      el.classList.add("lost");
+    } else {
+      el.classList.remove("lost");
+    }
+  });
+
+  if (lives === 1) {
+    const warning = document.getElementById("warningText");
+    warning.textContent = "Take heed, my friend… but one chance remains. The shadow of the Dark Lord draws near.";
+    warning.classList.remove("hidden");
+  }
+}
+// Sauron Wins - The game is over:
 function showGameOver() {
   quizBox.classList.add("hidden");
   document.getElementById("lotrGameOver").classList.remove("hidden");
 }
 
-/* RESET */
+// After 3 mistakes, fellowship loses... player starts the game from 1st level:
 function resetGame() {
-  gameOverScreen.classList.add("hidden");
-
+  document.getElementById("lotrGameOver").classList.add("hidden");
+  document.getElementById("lotrWin").classList.add("hidden");
+  quizBox.classList.remove("hidden");
   currentLevel = 0;
   unlockedLevel = 0;
+  lives = 2;
+
+  //  Frodo Live boxes changes
+  const livesEls = document.querySelectorAll(".life");
+  livesEls.forEach((el) => el.classList.remove("lost"));
+
+  /* ⚠️ warning ტექსტიც დავმალოთ */
+  document.getElementById("warningText").classList.add("hidden");
 
   highlightLevel(0);
   goToLevel(0);

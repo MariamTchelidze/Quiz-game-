@@ -2,30 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Detective Debugging</title>
+    <title>Debugging Quiz - Beyond the Ring</title>
     <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet" />
   </head>
   <body>
     <h1>Beyond the Ring: A New Path for Frodo</h1>
-
     <!-- Intropduction Part -->
     <div id="introScreen">
       <div class="intro-box">
-        <h1>Beyond the Ring</h1>
+        <h2>Beyond the Ring</h2>
 
         <p class="intro-text">
-          Frodo Baggins awoke in a time unknown to him. The tale of the One
-          Ring... now only a legend. The darkness has not returned — yet neither
-          has purpose.
+          Frodo Baggins awoke in a time unknown to him. The tale of the One Ring... now only a legend. The darkness has
+          not returned — yet neither has purpose.
           <br /><br />
-          And so, a new path must be forged. Not alone… but with you, Samwise.
+          And so, a new path must be forged. Not alone… but with you, Samwise!
         </p>
-
-        <!-- 🔗 LINKS -->
+        <!-- previous test for rewind the knowledge -->
         <div class="intro-links">
           <h3>
-            If you have not Discovered the mysterious places yet... You must
-            find your path first
+            Samwise Gamgee! <br />
+            This game isn't for weaks! if you aren't sure, you must Train First!
           </h3>
           <a href="https://4shortiia.github.io/html-intro-quiz/" target="_blank"
             >Ered Gorgoroth - Fight with Giant HTML spiders</a
@@ -33,69 +31,74 @@
           <a href="https://4shortiia.github.io/git-quiz/" target="_blank">
             Moria (Khazad-dûm) Fight with Git & Github Boss</a
           >
-          <a
-            href="https://whitebear004.github.io/quiz-game-testing/"
-            target="_blank"
-            >he Glittering Caves - Fight with the King of Colors and all the
-            styles - The CSS Great</a
+          <a href="https://whitebear004.github.io/quiz-game-testing/" target="_blank"
+            >he Glittering Caves - Fight with the King of Colors and all the styles - The CSS Great</a
           >
         </div>
-
         <button onclick="startGame()">Begin the Journey</button>
       </div>
     </div>
     <!-- game part -->
     <div class="game-container">
+      <!-- the life tree -->
       <div class="tree">
+        <!-- level circles -->
         <div id="levels"></div>
-
-        <div id="detective">
-          <img src="./assets/images/frodo.jpg" />
+        <!-- forodo level up -->
+        <div id="frodo">
+          <img src="./assets/frodo.jpg" />
         </div>
       </div>
 
-      <!-- 👉 QUIZ აქ -->
+      <!-- Quiz -->
       <div id="quizBox">
         <pre id="code"></pre>
         <h3 id="question"></h3>
         <div id="answers"></div>
       </div>
     </div>
+    <!-- lives -->
+    <div id="livesContainer">
+      <div class="life">
+        <img src="./assets/samwise.jpg" />
+      </div>
+      <div class="life">
+        <img src="./assets/samwise.jpg" />
+      </div>
+
+      <div class="life">
+        <img src="./assets/samwise.jpg" />
+      </div>
+    </div>
+
+    <div id="warningText" class="hidden"></div>
 
     <!-- pop up -->
-
     <div id="lotrGameOver" class="hidden">
       <div class="lotr-box">
-        <!-- 🧿 SAURON LEFT -->
-        <img src="./assets/images/sauron.png" class="sauron-img" />
-
-        <!-- TEXT SIDE -->
+        <!--  SAURON Wins fellowship loses -->
+        <img src="./assets/sauron.png" class="sauron-img" />
         <div class="lotr-content">
           <h2>
             Then it has all been in vain.<br />
             The fellowship has failed.
           </h2>
-
           <button onclick="resetGame()">Try Again</button>
         </div>
       </div>
     </div>
 
     <!--  Winners pop up -->
-
     <div id="lotrWin" class="hidden">
       <div class="lotr-box">
-        <img src="./assets/images/Aragorn.png" class="aragorn-img" />
-
+        <img src="./assets/Aragorn.png" class="aragorn-img" />
         <div class="lotr-content">
           <h2 class="lotr-text">
             Elf of keen sight and subtle craft,<br />
             you have mastered the hidden arts of CSS.<br /><br />
             From this day forth, know this:
           </h2>
-
           <div class="lotr-hero-line">You bow to no one.</div>
-
           <button onclick="resetGame()">Play Again</button>
         </div>
       </div>
