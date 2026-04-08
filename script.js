@@ -15,41 +15,45 @@ let answered = false;
 
 /* POSITIONS */
 const positions = [
-  { x: 500, y: 650 },
+  { x: 500, y: 650 }, // 1
 
   { x: 350, y: 600 },
-  { x: 650, y: 600 },
+  { x: 650, y: 600 }, // 2-3
 
   { x: 250, y: 550 },
-  { x: 750, y: 550 },
+  { x: 750, y: 550 }, // 4-5
 
   { x: 400, y: 500 },
-  { x: 600, y: 500 },
+  { x: 600, y: 500 }, // 6-7
 
   { x: 200, y: 450 },
-  { x: 800, y: 450 },
+  { x: 800, y: 450 }, // 8-9
 
   { x: 350, y: 400 },
-  { x: 650, y: 400 },
+  { x: 650, y: 400 }, // 10-11
 
   { x: 150, y: 350 },
-  { x: 850, y: 350 },
+  { x: 850, y: 350 }, // 12-13
 
   { x: 300, y: 300 },
-  { x: 700, y: 300 },
+  { x: 700, y: 300 }, // 14-15
 
   { x: 450, y: 250 },
-  { x: 550, y: 250 },
+  { x: 550, y: 250 }, // 16-17
 
   { x: 350, y: 200 },
-  { x: 650, y: 200 },
+  { x: 650, y: 200 }, // 18-19
 
-  { x: 500, y: 150 },
+  { x: 500, y: 150 }, // 20
 
-  { x: 400, y: 100 },
-  { x: 600, y: 100 },
+  { x: 400, y: 110 },
+  { x: 600, y: 110 }, // 21-22
 
-  { x: 500, y: 50 },
+  { x: 450, y: 70 }, // 23
+
+  { x: 550, y: 70 }, // 24 🆕
+
+  { x: 500, y: 30 }, // 25 🆕 (top boss level)
 ];
 /* CREATE LEVELS */
 positions.forEach((pos, i) => {
@@ -295,17 +299,16 @@ function checkAnswer(btn, selected, index) {
   if (selected === correct) {
     btn.classList.add("correct");
 
-    if (index === unlockedLevel) {
-      unlockedLevel++;
-    }
+    if (currentLevel === unlockedLevel) unlockedLevel++;
 
     setTimeout(() => {
-      if (index + 1 < positions.length) {
-        goToLevel(index + 1);
-      } else {
+      /* 🔥 აქ ხდება WIN CHECK */
+      if (currentLevel === positions.length - 1) {
         showWin();
+      } else {
+        goToLevel(currentLevel + 1);
       }
-    }, 700);
+    }, 600);
   } else {
     btn.classList.add("wrong");
     buttons[correct].classList.add("correct");
@@ -324,7 +327,7 @@ function showGameOver() {
 
 /* RESET */
 function resetGame() {
-  document.getElementById("lotrGameOver").classList.add("hidden");
+  gameOverScreen.classList.add("hidden");
 
   currentLevel = 0;
   unlockedLevel = 0;
@@ -332,13 +335,11 @@ function resetGame() {
   highlightLevel(0);
   goToLevel(0);
 }
-/* 👇 აი აქ */
-window.resetGame = resetGame;
 
 /* WIN */
 function showWin() {
   quizBox.classList.add("hidden");
-  winScreen.classList.remove("hidden");
+  document.getElementById("lotrWin").classList.remove("hidden");
 }
 
 /* START */
