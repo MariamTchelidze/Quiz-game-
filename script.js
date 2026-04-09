@@ -6,8 +6,8 @@ const codeEl = document.getElementById("code");
 const questionEl = document.getElementById("question");
 const answersEl = document.getElementById("answers");
 
-const winScreen = document.getElementById("win");
-const gameOverScreen = document.getElementById("gameOver");
+const winScreen = document.getElementById("lotrWin");
+const gameOverScreen = document.getElementById("lotrGameOver");
 
 let currentLevel = 0;
 let unlockedLevel = 0;
@@ -32,15 +32,15 @@ function startGame() {
   }, 400);
   document.getElementById("introScreen").classList.add("hidden");
 
-  /* 🎧 START MUSIC */
+  //  Music:
   bgMusic.src = "./assets/Audios/main theme - The Lord Of The Rings.mp3";
   bgMusic.volume = 0.3;
   bgMusic.currentTime = 0;
   bgMusic.play().catch(() => {});
-
   highlightLevel(0);
   goToLevel(0);
 }
+
 // Level positioning on tree:
 const positions = [
   { x: 50, y: 88 },
@@ -322,7 +322,6 @@ function checkAnswer(btn, selected) {
       bgMusic.volume = 0.4;
       bgMusic.currentTime = 0;
       bgMusic.play();
-
       hasSwitchedToBattle = true;
     }
   }
@@ -344,7 +343,6 @@ function checkAnswer(btn, selected) {
 // lives tracker
 function updateLivesUI() {
   const livesEls = document.querySelectorAll(".life");
-
   livesEls.forEach((el, index) => {
     if (index >= lives) {
       el.classList.add("lost");
@@ -392,7 +390,7 @@ function resetGame() {
   quizBox.classList.remove("hidden");
   currentLevel = 0;
   unlockedLevel = 0;
-  lives = 2;
+  lives = 3;
 
   //  Samwise Live boxes changes
   const livesEls = document.querySelectorAll(".life");
