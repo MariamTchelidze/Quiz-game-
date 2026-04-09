@@ -202,7 +202,7 @@ h1::after {
   min-height: 50rem;
   margin: 4rem auto;
   border-radius: 2rem;
-  background: url("./assets/Mission-Tree.png") center center / contain no-repeat;
+  background: url("./assets/Images/Mission-Tree.png") center center / contain no-repeat;
 }
 .game-container {
   display: flex;
@@ -369,7 +369,7 @@ button:disabled {
   margin-top: 1rem;
   color: #e0c36d;
   font-family: "Marcellus", serif;
-  font-size: 1.8rem;
+  font-size: 2.6rem;
   line-height: 1.5;
   text-shadow: 0 0 0.8rem rgba(224, 195, 109, 0.5);
 }

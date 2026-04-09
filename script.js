@@ -14,6 +14,10 @@ let unlockedLevel = 0;
 let answered = false;
 let lives = 3;
 
+const bgMusic = document.getElementById("bgMusic");
+const effectMusic = document.getElementById("effectMusic");
+let hasSwitchedToBattle = false;
+
 // Introduction pop-up:
 function startGame() {
   const intro = document.getElementById("introScreen");
@@ -26,6 +30,13 @@ function startGame() {
     const game = document.getElementById("game");
     game.classList.remove("hidden");
   }, 400);
+  document.getElementById("introScreen").classList.add("hidden");
+
+  /* 🎧 START MUSIC */
+  bgMusic.src = "./assets/Audios/main theme - The Lord Of The Rings.mp3";
+  bgMusic.volume = 0.3;
+  bgMusic.currentTime = 0;
+  bgMusic.play().catch(() => {});
 
   highlightLevel(0);
   goToLevel(0);
@@ -291,7 +302,7 @@ function checkAnswer(btn, selected) {
 
   buttons.forEach((b) => (b.disabled = true));
 
-  // Progress in levels
+  // Progress
   if (currentLevel === unlockedLevel) {
     unlockedLevel++;
   }
@@ -304,16 +315,24 @@ function checkAnswer(btn, selected) {
 
     lives--;
     updateLivesUI();
+
+    //  Music Changer -- hope youtube will not sue me :D
+    if (!hasSwitchedToBattle) {
+      bgMusic.src = "assets/Audios/main theme-After Mistake-King of The Dead.mp3";
+      bgMusic.volume = 0.4;
+      bgMusic.currentTime = 0;
+      bgMusic.play();
+
+      hasSwitchedToBattle = true;
+    }
   }
 
   setTimeout(() => {
-    // Sauron wins - game over
     if (lives === 0) {
       showGameOver();
       return;
     }
 
-    // Fellowship wins - Victory
     if (currentLevel === positions.length - 1) {
       showWin();
     } else {
@@ -344,10 +363,30 @@ function updateLivesUI() {
 function showGameOver() {
   quizBox.classList.add("hidden");
   document.getElementById("lotrGameOver").classList.remove("hidden");
+
+  // Sauron audio plays
+  bgMusic.pause();
+  effectMusic.src = "assets/Audios/Theme song - Game Over - There is no life in the void only death.mp3";
+  effectMusic.volume = 0.6;
+  effectMusic.currentTime = 0;
+  effectMusic.play();
 }
 
 // After 3 mistakes, fellowship loses... player starts the game from 1st level:
 function resetGame() {
+  // Stop all the audios
+  bgMusic.pause();
+  bgMusic.currentTime = 0;
+  effectMusic.pause();
+  effectMusic.currentTime = 0;
+
+  // reset for audios
+  hasSwitchedToBattle = false;
+  // when start again the game start the main theme song again
+  bgMusic.src = "assets/Audios/main theme - The Lord Of The Rings.mp3";
+  bgMusic.volume = 0.3;
+  bgMusic.play();
+
   document.getElementById("lotrGameOver").classList.add("hidden");
   document.getElementById("lotrWin").classList.add("hidden");
   quizBox.classList.remove("hidden");
@@ -358,7 +397,6 @@ function resetGame() {
   //  Samwise Live boxes changes
   const livesEls = document.querySelectorAll(".life");
   livesEls.forEach((el) => el.classList.remove("lost"));
-
   //  after losing hiding the warning text
   document.getElementById("warningText").classList.add("hidden");
   highlightLevel(0);
@@ -369,6 +407,12 @@ function resetGame() {
 function showWin() {
   quizBox.classList.add("hidden");
   document.getElementById("lotrWin").classList.remove("hidden");
+  // Victory Audio - Aragorn words "You bow to no one"
+  bgMusic.pause();
+  effectMusic.src = "assets/Audios/main theme - Winner - You bow to no one.mp3";
+  effectMusic.volume = 0.6;
+  effectMusic.currentTime = 0;
+  effectMusic.play();
 }
 
 // Game starting
