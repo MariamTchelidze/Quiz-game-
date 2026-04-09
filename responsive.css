@@ -15,13 +15,6 @@
     margin-top: 2rem;
     align-self: center;
   }
-
-  /* #livesContainer {
-
-    height: 6rem;
-   
-    justify-conten: center;
-  } */
 }
 @media (max-width: 992px) {
   .game-container {

@@ -283,40 +283,44 @@ function showQuestion(index) {
 // Answer Checker: true/false
 function checkAnswer(btn, selected) {
   if (answered) return;
+
   answered = true;
+
   const correct = questions[currentLevel].answer;
   const buttons = answersEl.querySelectorAll("button");
+
   buttons.forEach((b) => (b.disabled = true));
+
+  // Progress in levels
+  if (currentLevel === unlockedLevel) {
+    unlockedLevel++;
+  }
+
   if (selected === correct) {
     btn.classList.add("correct");
-
-    if (currentLevel === unlockedLevel) unlockedLevel++;
-
-    setTimeout(() => {
-      answered = false;
-
-      if (currentLevel === positions.length - 1) {
-        showWin();
-      } else {
-        goToLevel(currentLevel + 1);
-      }
-    }, 600);
   } else {
     btn.classList.add("wrong");
     buttons[correct].classList.add("correct");
 
     lives--;
     updateLivesUI();
-
-    setTimeout(() => {
-      if (lives === 0) {
-        showGameOver();
-      } else {
-        answered = false;
-        goToLevel(currentLevel + 1);
-      }
-    }, 800);
   }
+
+  setTimeout(() => {
+    // Sauron wins - game over
+    if (lives === 0) {
+      showGameOver();
+      return;
+    }
+
+    // Fellowship wins - Victory
+    if (currentLevel === positions.length - 1) {
+      showWin();
+    } else {
+      answered = false;
+      goToLevel(currentLevel + 1);
+    }
+  }, 700);
 }
 // lives tracker
 function updateLivesUI() {

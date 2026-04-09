@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Debugging Quiz - Beyond the Ring</title>
+    <link rel="icon" type="image/png" href="./assets/tab-icon.jpeg" />
     <link rel="stylesheet" href="responsive.css" />
     <link rel="stylesheet" href="styles.css" />
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet" />
@@ -10,43 +11,42 @@
   <body>
     <h1>Beyond the Ring: A New Path for Frodo</h1>
     <!-- Intropduction Part -->
-    <div id="introScreen">
+    <section id="introScreen">
       <div class="intro-box">
-        <h2>Beyond the Ring</h2>
+        <h2 class="intro-heading">Beyond the Ring</h2>
 
-        <p class="intro-text">
+        <p class="intro-p">
           Frodo Baggins awoke in a time unknown to him. The tale of the One Ring... now only a legend. The darkness has
           not returned — yet neither has purpose.
-          <br /><br />
-          And so, a new path must be forged. Not alone… but with you, Samwise!
         </p>
+        <p class="intro-p">And so, a new path must be forged. Not alone… but with you, Samwise!</p>
         <!-- previous test for rewind the knowledge -->
         <div class="intro-links">
-          <h3>
+          <h3 class="intro-secondary-heading">
             Samwise Gamgee! <br />
             This game isn't for weaks! if you aren't sure, you must Train First!
           </h3>
-          <a href="https://4shortiia.github.io/html-intro-quiz/" target="_blank">
+          <a class="intro-link" href="https://4shortiia.github.io/html-intro-quiz/" target="_blank">
             <span class="link-text" data-author="© Nora Ashortia">
               Ered Gorgoroth - Fight with Giant HTML spiders
             </span>
           </a>
-          <a href="https://4shortiia.github.io/git-quiz/" target="_blank">
+          <a class="intro-link" href="https://4shortiia.github.io/git-quiz/" target="_blank">
             <span class="link-text" data-author="© Nora Ashortia">
               Moria (Khazad-dûm) Fight with Git & Github Boss
             </span>
           </a>
-          <a href="https://whitebear004.github.io/quiz-game-testing/" target="_blank">
+          <a class="intro-link" href="https://whitebear004.github.io/quiz-game-testing/" target="_blank">
             <span class="link-text" data-author="© Lana Tcholaria">
               The Glittering Caves Fight with King of Colors and styles - The CSS Great
             </span>
           </a>
         </div>
-        <button onclick="startGame()">Begin the Journey</button>
+        <button class="intro-btn" onclick="startGame()">Begin the Journey</button>
       </div>
-    </div>
+    </section>
     <!-- game part -->
-    <div class="game-container">
+    <section class="game-container">
       <!-- the life tree -->
       <div class="tree">
         <!-- level circles -->
@@ -56,16 +56,15 @@
           <img src="./assets/frodo.jpg" />
         </div>
       </div>
-
       <!-- Quiz -->
       <div id="quizBox">
         <pre id="code"></pre>
         <h3 id="question"></h3>
         <div id="answers"></div>
       </div>
-    </div>
+    </section>
     <!-- lives -->
-    <div id="livesContainer">
+    <section id="livesContainer">
       <div class="life">
         <img src="./assets/samwise.jpg" />
       </div>
@@ -76,40 +75,35 @@
       <div class="life">
         <img src="./assets/samwise.jpg" />
       </div>
-    </div>
+    </section>
 
     <div id="warningText" class="hidden"></div>
 
-    <!-- pop up -->
-    <div id="lotrGameOver" class="hidden">
+    <!--  SAURON Wins fellowship loses pop-up window -->
+    <section id="lotrGameOver" class="hidden">
       <div class="lotr-box">
-        <!--  SAURON Wins fellowship loses -->
         <img src="./assets/sauron.png" class="sauron-img" />
         <div class="lotr-content">
-          <h2>
-            Then it has all been in vain.<br />
-            The fellowship has failed.
-          </h2>
+          <h2 class="lotr-text">Then it has all been in vain.</h2>
+          <h2 class="lotr-text">The fellowship has failed.</h2>
           <button onclick="resetGame()">Try Again</button>
         </div>
       </div>
-    </div>
+    </section>
 
     <!--  Winners pop up -->
-    <div id="lotrWin" class="hidden">
+    <section id="lotrWin" class="hidden">
       <div class="lotr-box">
         <img src="./assets/Aragorn.png" class="aragorn-img" />
         <div class="lotr-content">
-          <h2 class="lotr-text">
-            Elf of keen sight and subtle craft,<br />
-            you have mastered the hidden arts of CSS.<br /><br />
-            From this day forth, know this:
-          </h2>
+          <p class="lotr-text">Hobbit of keen wit and quiet skill,</p>
+          <p class="lotr-text">you have mastered the hidden arts of CSS.</p>
+          <h2 class="lotr-text">From this day forth, know this:</h2>
           <div class="lotr-hero-line">You bow to no one.</div>
           <button onclick="resetGame()">Play Again</button>
         </div>
       </div>
-    </div>
+    </section>
     <script src="script.js"></script>
   </body>
 </html>

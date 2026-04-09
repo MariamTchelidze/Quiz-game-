@@ -62,14 +62,14 @@ h1::after {
   box-shadow: 0 0 4rem rgba(224, 195, 109, 0.4);
 }
 
-.intro-box h2 {
+.intro-heading {
   font-family: "Marcellus", serif;
   font-size: 3.6rem;
   color: #e0c36d;
   margin-bottom: 2rem;
 }
 /* ===== INTRO TEXT ===== */
-.intro-text {
+.intro-p {
   font-family: "Marcellus", serif;
   font-size: 1.6rem;
   color: #d6c08a;
@@ -239,7 +239,7 @@ h1::after {
   text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.8);
   box-shadow: 0 0 1.2rem rgba(194, 168, 92, 0.5);
   cursor: pointer;
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
 }
 .level:hover {
   transform: scale(1.1);
@@ -262,7 +262,7 @@ h1::after {
   transform: translate(-50%, -50%);
   transition: 0.4s ease;
   filter: drop-shadow(0 0 0.6rem rgba(194, 168, 92, 0.6));
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
 }
 
 #frodo img {
@@ -273,6 +273,7 @@ h1::after {
   border-radius: 50%;
   border: 0.2rem solid #c2a85c;
   box-shadow: 0 0 1rem rgba(194, 168, 92, 0.6);
+  transform: translate(50%, 50%);
 }
 /* Quiz container */
 #quizBox {
