@@ -1,27 +1,23 @@
-@media (max-width: 1355px) {
+@media (max-width: 1200px) {
+  .game-container {
+    gap: 2rem;
+  }
+
   .tree {
-    width: 100%;
     max-width: 80rem;
-    min-height: unset;
   }
 
   #quizBox {
-    width: 100%;
-    margin-top: 2rem;
-    align-self: center;
+    max-width: 32rem;
   }
 }
-@media (max-width: 1341px) {
-  .game-container {
+
+@media (max-width: 992px) {
+  main {
     flex-direction: column;
-    justify-content: center;
     align-items: center;
   }
-  .quiz-parent {
-    align-self: center;
-  }
-}
-@media (max-width: 992px) {
+
   .game-container {
     flex-direction: column;
     align-items: center;
@@ -29,52 +25,39 @@
   }
 
   .tree {
-    width: 90%;
+    width: 100%;
     max-width: 70rem;
-    height: auto;
-    aspect-ratio: 1000 / 700;
+  }
+
+  .quiz-parent {
+    width: 100%;
+    max-width: 50rem;
   }
 
   #quizBox {
-    width: 90%;
-    align-self: center;
+    width: 100%;
   }
 
   #livesContainer {
-    position: static;
     justify-content: center;
-    margin-top: 2rem;
   }
 }
 
-/* mobile breakpoint */
 @media (max-width: 768px) {
+  html {
+    font-size: 56%;
+  }
+
+  header {
+    padding: 1.5rem;
+  }
+
   h1 {
     font-size: 2.4rem;
   }
 
-  .game-container {
-    gap: 2rem;
-  }
-
   .tree {
-    aspect-ratio: auto; /* ძალიან მნიშვნელოვანია */
-    min-height: unset;
-    max-height: unset;
-
-    height: auto;
-    width: 95%;
-  }
-
-  #quizBox {
-    width: 95%;
-    padding: 1.5rem;
-  }
-
-  .level {
-    width: 4.5rem;
-    height: 4.5rem;
-    font-size: 1.4rem;
+    min-height: 40rem;
   }
 
   #frodo img {
@@ -83,95 +66,77 @@
   }
 
   .life {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  #code {
+    font-size: 1.6rem;
+  }
+
+  #question {
+    font-size: 1.6rem;
+  }
+
+  #answers button {
+    font-size: 1.4rem;
   }
 }
-@media (max-width: 768px) {
-  #quizBox {
-    position: static;
-    margin-top: 2rem;
+
+@media (max-width: 576px) {
+  html {
+    font-size: 50%;
+  }
+
+  .intro-box {
     width: 90%;
+    padding: 2rem;
   }
 
-  .game-container {
-    align-items: center;
+  .intro-heading {
+    font-size: 2.4rem;
   }
 
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  /* სიცოცხლეები */
-  #livesContainer {
-    position: fixed;
-    left: 1.5rem;
-    top: 0;
-    transform: translateY(-50%);
-
-    flex-direction: column;
-    gap: 1rem;
-
-    z-index: 50;
-  }
-}
-
-@media (max-width: 480px) {
-  h1 {
-    font-size: 2.2rem;
-    padding: 0 1rem;
+  .intro-links h3 {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
   }
 
   .tree {
-    width: 100%;
+    min-height: 32rem;
+  }
+
+  .game-container {
+    padding: 0 1rem;
   }
 
   #quizBox {
-    width: 95%;
-    padding: 1.2rem;
+    padding: 1.5rem;
   }
 
-  .level {
-    width: 4rem;
-    height: 4rem;
-    font-size: 1.2rem;
+  .lotr-box {
+    flex-direction: column;
+    width: 90%;
+    text-align: center;
   }
 
-  #frodo img {
-    width: 4.5rem;
-    height: 4.5rem;
-  }
-
-  .life {
-    width: 4rem;
-    height: 4rem;
+  .sauron-img,
+  .aragorn-img {
+    width: 14rem;
   }
 }
 
-@media (max-width: 320px) {
-  h1 {
-    font-size: 2rem;
+@media (max-width: 400px) {
+  html {
+    font-size: 45%;
   }
 
-  #quizBox {
-    width: 100%;
-    padding: 1rem;
-  }
-
-  .level {
-    width: 3.5rem;
-    height: 3.5rem;
-    font-size: 1.1rem;
+  .tree {
+    min-height: 28rem;
   }
 
   #frodo img {
     width: 4rem;
     height: 4rem;
-  }
-
-  .life {
-    width: 3.5rem;
-    height: 3.5rem;
   }
 }

@@ -32,7 +32,7 @@ h1 {
   color: #c2a85c;
   font-family: "Marcellus", serif;
   text-align: center;
-  font-size: 3rem;
+  font-size: clamp(2.4rem, 3vw, 4rem);
   letter-spacing: 0.15rem;
   text-shadow:
     0 0 0.6rem rgba(224, 195, 109, 0.6),
@@ -345,7 +345,7 @@ button:disabled {
 
 /* Lives */
 #livesContainer {
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   gap: 1.5rem;
   background: transparent;
