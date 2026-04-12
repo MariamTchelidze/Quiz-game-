@@ -372,31 +372,46 @@ function showGameOver() {
 
 // After 3 mistakes, fellowship loses... player starts the game from 1st level:
 function resetGame() {
-  // Stop all the audios
+  /* stop all audio */
   bgMusic.pause();
   bgMusic.currentTime = 0;
+
   effectMusic.pause();
   effectMusic.currentTime = 0;
 
-  // reset for audios
+  /* reset game state */
   hasSwitchedToBattle = false;
-  // when start again the game start the main theme song again
-  bgMusic.src = "assets/Audios/main theme - The Lord Of The Rings.mp3";
-  bgMusic.volume = 0.3;
-  bgMusic.play();
 
-  document.getElementById("lotrGameOver").classList.add("hidden");
-  document.getElementById("lotrWin").classList.add("hidden");
-  quizBox.classList.remove("hidden");
+  /* main theme player */
+  bgMusic.src = "assets/Audios/ambient.mp3"; // 🔥 გირჩევ rename
+  bgMusic.volume = 0.3;
+  bgMusic.play().catch(() => {});
+
+  /* reset game state */
   currentLevel = 0;
   unlockedLevel = 0;
   lives = 3;
+  answered = false;
 
-  //  Samwise Live boxes changes
+  /* HIDE POPUPS */
+  document.getElementById("lotrGameOver").classList.add("hidden");
+  document.getElementById("lotrWin").classList.add("hidden");
+
+  /* show quiz */
+  quizBox.classList.remove("hidden");
+
+  /* reset lives */
   const livesEls = document.querySelectorAll(".life");
   livesEls.forEach((el) => el.classList.remove("lost"));
-  //  after losing hiding the warning text
-  document.getElementById("warningText").classList.add("hidden");
+
+  /* Warning text reset*/
+  const warning = document.getElementById("warningText");
+  if (warning) {
+    warning.classList.add("hidden");
+    warning.textContent = ""; // 🔥 ძალიან მნიშვნელოვანია
+  }
+
+  /* Back to first level */
   highlightLevel(0);
   goToLevel(0);
 }
