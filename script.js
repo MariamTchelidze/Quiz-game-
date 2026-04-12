@@ -427,7 +427,29 @@ function showWin() {
   effectMusic.currentTime = 0;
   effectMusic.play();
 }
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    // if screen is blocked
+    bgMusic.pause();
+    effectMusic.pause();
+  } else {
+    const isGameOverVisible = !document.getElementById("lotrGameOver").classList.contains("hidden");
+    const isWinVisible = !document.getElementById("lotrWin").classList.contains("hidden");
 
+    //  popo-up visibility condition
+    if (isGameOverVisible || isWinVisible) return;
+
+    // resume from correct music based on game state
+    if (!hasSwitchedToBattle) {
+      bgMusic.src = "assets/Audios/ambient.mp3";
+    } else {
+      bgMusic.src = "assets/Audios/battle.mp3";
+    }
+
+    bgMusic.currentTime = 0;
+    bgMusic.play().catch(() => {});
+  }
+});
 // Game starting
 highlightLevel(0);
 goToLevel(0);
