@@ -5,7 +5,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* general styles */
+/*-------------------- general styles --------------------*/
 body {
   margin: 0;
   width: 100%;
@@ -20,14 +20,14 @@ html {
   font-size: 62.5%;
 }
 header {
-  padding: 2rem;
+  padding: 2.5rem;
 }
 main {
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
-/* main heading styles */
+/*-------------------- main heading styles --------------------*/
 h1 {
   color: #c2a85c;
   font-family: "Marcellus", serif;
@@ -46,7 +46,7 @@ h1::after {
   margin: 1rem auto 0;
   background: linear-gradient(to right, transparent, gold, transparent);
 }
-/* Intro pop up */
+/*-------------------- Intro pop up --------------------*/
 #introScreen {
   position: fixed;
   top: 0;
@@ -76,7 +76,7 @@ h1::after {
   color: #e0c36d;
   margin-bottom: 2rem;
 }
-/* ===== INTRO TEXT ===== */
+
 .intro-p {
   font-family: "Marcellus", serif;
   font-size: 1.6rem;
@@ -85,7 +85,6 @@ h1::after {
   margin-bottom: 2rem;
 }
 
-/* ===== LINKS CONTAINER ===== */
 .intro-links {
   margin: 2rem 0;
   text-align: left;
@@ -93,7 +92,6 @@ h1::after {
   flex-direction: column;
 }
 
-/* ===== TITLE ===== */
 .intro-links h3 {
   font-family: "Marcellus", serif;
   font-size: 1.6rem;
@@ -102,7 +100,6 @@ h1::after {
   margin-bottom: 5rem;
 }
 
-/* ===== LINKS ===== */
 .intro-links a {
   position: relative;
   display: block;
@@ -114,8 +111,7 @@ h1::after {
   text-decoration: none;
   transition: 0.3s;
 }
-
-/* ===== 💍 RING ICON ===== */
+/*-------------------- ring marker --------------------*/
 .intro-links a::before {
   content: "◯";
   position: absolute;
@@ -127,7 +123,6 @@ h1::after {
   transition: 0.3s;
 }
 
-/* ===== HOVER EFFECT ===== */
 .intro-links a:hover {
   transform: scale(1.05);
   color: #f5e6b0;
@@ -171,7 +166,6 @@ h1::after {
   transition: 0.3s;
 }
 
-/* SHOW TOOLTIP */
 .intro-links a:hover .link-text::after {
   opacity: 1;
   transform: translateY(0);
@@ -193,7 +187,7 @@ h1::after {
   box-shadow: 0 0 1rem rgba(224, 195, 109, 0.5);
 }
 
-/* main game container */
+/* -------------------- main game container --------------------*/
 .tree {
   position: relative;
   width: 100%;
@@ -201,10 +195,8 @@ h1::after {
   max-height: 70rem;
   aspect-ratio: 1000 / 700;
   min-height: 50rem;
-  /* margin: 4rem auto; */
   border-radius: 2rem;
   background: url("./assets/Images/Mission-Tree.png") center center / cover no-repeat;
-  background-color: green;
 }
 .game-container {
   display: flex;
@@ -215,7 +207,7 @@ h1::after {
   margin: 0 auto;
   padding: 0 2rem;
 }
-/* levels - 1-25 */
+/*-------------------- levels - 1-25 --------------------*/
 #levels {
   position: absolute;
   top: 0;
@@ -224,7 +216,7 @@ h1::after {
   height: 100%;
 }
 
-/* Level ring */
+/*-------------------- Level ring */
 .level {
   width: clamp(3rem, 4vw, 5rem);
   height: clamp(3rem, 4vw, 5rem);
@@ -241,13 +233,12 @@ h1::after {
   text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.8);
   box-shadow: 0 0 1.2rem rgba(194, 168, 92, 0.5);
   cursor: pointer;
-  /* transform: translate(-50%, -50%); */
 }
 .level:hover {
   transform: scale(1.1);
 }
 
-/* level rings style according their state */
+/*-------------------- level rings style according their state --------------------*/
 .level.active {
   background: #e0c36d;
   color: black;
@@ -258,7 +249,7 @@ h1::after {
   cursor: not-allowed;
 }
 
-/* Player - Frodo Baggins */
+/*-------------------- Player - Frodo Baggins --------------------*/
 #frodo {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -276,7 +267,7 @@ h1::after {
   box-shadow: 0 0 1rem rgba(194, 168, 92, 0.6);
   transform: translate(50%, 50%);
 }
-/* Quiz container */
+/*-------------------- Quiz container --------------------*/
 .quiz-parent {
   display: flex;
   flex-direction: column;
@@ -286,14 +277,13 @@ h1::after {
 }
 #quizBox {
   width: 100%;
-  /* width: 38rem; */
   background: #1a1816;
   padding: 2rem;
   border-radius: 1.2rem;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(0.6rem);
 }
-/* Code snippet */
+/* -------------------- Code snippet -------------------- */
 #code {
   background: #000;
   color: #e0c36d;
@@ -330,7 +320,7 @@ h1::after {
   background: #5a4632;
 }
 
-/* Answer states */
+/*-------------------- Answer states --------------------*/
 .correct {
   background: green !important;
 }
@@ -343,15 +333,11 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* Lives */
+/*-------------------- Lives --------------------*/
 #livesContainer {
-  /* width: 100%; */
   display: flex;
   gap: 1.5rem;
   background: transparent;
-  /* position: fixed;
-  bottom: 3rem;
-  right: 3rem; */
 }
 .life {
   width: 5rem;
@@ -363,7 +349,7 @@ button:disabled {
   transition: 0.3s;
 }
 
-/* profile image */
+/*-------------------- profile image --------------------*/
 .life img {
   width: 100%;
   height: 100%;
@@ -375,7 +361,7 @@ button:disabled {
   opacity: 0.4;
 }
 
-/*  Warning text */
+/*-------------------- Warning text --------------------*/
 #warningText {
   margin-top: 1rem;
   color: #e0c36d;
@@ -385,7 +371,7 @@ button:disabled {
   text-shadow: 0 0 0.8rem rgba(224, 195, 109, 0.5);
 }
 
-/* Game Over */
+/*-------------------- Game Over --------------------*/
 #lotrGameOver {
   position: fixed;
   top: 0;
@@ -449,7 +435,7 @@ button:disabled {
   background: #5a4632;
 }
 
-/* Winner's pop up  */
+/* -------------------- Winner's pop up  --------------------*/
 #lotrWin {
   position: fixed;
   top: 0;
