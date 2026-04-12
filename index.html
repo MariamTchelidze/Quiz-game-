@@ -11,109 +11,116 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
-    <title>Debugging Quiz - Beyond the Ring</title>
+    <title>Beyond the Ring - Debugging quiz Game</title>
     <link rel="icon" type="image/png" href="./assets/tab-icon.jpeg" />
     <link rel="stylesheet" href="responsive.css" />
     <link rel="stylesheet" href="styles.css" />
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <h1>Beyond the Ring: A New Path for Frodo</h1>
-    <!-- Intropduction Part -->
-    <section id="introScreen">
-      <div class="intro-box">
-        <h2 class="intro-heading">Beyond the Ring</h2>
+    <header>
+      <h1>Beyond the Ring: A New Path for Frodo</h1>
+    </header>
+    <main>
+      <!-- Intropduction Part -->
+      <section id="introScreen">
+        <div class="intro-box">
+          <h2 class="intro-heading">Beyond the Ring</h2>
 
-        <p class="intro-p">
-          Frodo Baggins awoke in a time unknown to him. The tale of the One Ring... now only a legend. The darkness has
-          not returned — yet neither has purpose.
-        </p>
-        <p class="intro-p">And so, a new path must be forged. Not alone… but with you, Samwise!</p>
-        <!-- previous test for rewind the knowledge -->
-        <div class="intro-links">
-          <h3 class="intro-secondary-heading">
-            Samwise Gamgee! <br />
-            This game isn't for weaks! if you aren't sure, you must Train First!
-          </h3>
-          <a class="intro-link" href="https://4shortiia.github.io/html-intro-quiz/" target="_blank">
-            <span class="link-text" data-author="© Nora Ashortia">
-              Ered Gorgoroth - Fight with Giant HTML spiders
-            </span>
-          </a>
-          <a class="intro-link" href="https://4shortiia.github.io/git-quiz/" target="_blank">
-            <span class="link-text" data-author="© Nora Ashortia">
-              Moria (Khazad-dûm) Fight with Git & Github Boss
-            </span>
-          </a>
-          <a class="intro-link" href="https://whitebear004.github.io/quiz-game-testing/" target="_blank">
-            <span class="link-text" data-author="© Lana Tcholaria">
-              The Glittering Caves Fight with King of Colors and styles - The CSS Great
-            </span>
-          </a>
+          <p class="intro-p">
+            Frodo Baggins awoke in a time unknown to him. The tale of the One Ring... now only a legend. The darkness
+            has not returned — yet neither has purpose.
+          </p>
+          <p class="intro-p">And so, a new path must be forged. Not alone… but with you, Samwise!</p>
+          <!-- previous test for rewind the knowledge -->
+          <div class="intro-links">
+            <h3 class="intro-secondary-heading">
+              Samwise Gamgee! <br />
+              This game isn't for weaks! if you aren't sure, you must Train First!
+            </h3>
+            <a class="intro-link" href="https://4shortiia.github.io/html-intro-quiz/" target="_blank">
+              <span class="link-text" data-author="© Nora Ashortia">
+                Ered Gorgoroth - Fight with Giant HTML spiders
+              </span>
+            </a>
+            <a class="intro-link" href="https://4shortiia.github.io/git-quiz/" target="_blank">
+              <span class="link-text" data-author="© Nora Ashortia">
+                Moria (Khazad-dûm) Fight with Git & Github Boss
+              </span>
+            </a>
+            <a class="intro-link" href="https://whitebear004.github.io/quiz-game-testing/" target="_blank">
+              <span class="link-text" data-author="© Lana Tcholaria">
+                The Glittering Caves Fight with King of Colors and styles - The CSS Great
+              </span>
+            </a>
+          </div>
+          <button class="intro-btn" onclick="startGame()">Begin the Journey</button>
         </div>
-        <button class="intro-btn" onclick="startGame()">Begin the Journey</button>
-      </div>
-    </section>
-    <!-- game part -->
-    <section class="game-container">
-      <!-- the life tree -->
-      <div class="tree">
-        <!-- level circles -->
-        <div id="levels"></div>
-        <!-- forodo level up -->
-        <div id="frodo">
-          <img src="./assets/Images/frodo.jpg" />
+      </section>
+
+      <!-- game part -->
+      <section class="game-container">
+        <!-- the life tree -->
+        <div class="tree">
+          <!-- level circles -->
+          <div id="levels"></div>
+          <!-- forodo level up -->
+          <div id="frodo">
+            <img src="./assets/Images/frodo.jpg" />
+          </div>
         </div>
-      </div>
-      <!-- Quiz -->
-      <div id="quizBox">
-        <pre id="code"></pre>
-        <h3 id="question"></h3>
-        <div id="answers"></div>
-      </div>
-    </section>
-    <!-- lives -->
-    <section id="livesContainer">
-      <div class="life">
-        <img src="./assets/Images/samwise.jpg" />
-      </div>
-      <div class="life">
-        <img src="./assets/Images/samwise.jpg" />
-      </div>
 
-      <div class="life">
-        <img src="./assets/Images/samwise.jpg" />
-      </div>
-    </section>
+        <div class="quiz-parent">
+          <!-- Quiz -->
+          <div id="quizBox">
+            <pre id="code"></pre>
+            <h3 id="question"></h3>
+            <div id="answers"></div>
+          </div>
+          <!-- lives -->
+          <section id="livesContainer">
+            <div class="life">
+              <img src="./assets/Images/samwise.jpg" />
+            </div>
+            <div class="life">
+              <img src="./assets/Images/samwise.jpg" />
+            </div>
 
-    <div id="warningText" class="hidden"></div>
-
-    <!--  SAURON Wins fellowship loses pop-up window -->
-    <section id="lotrGameOver" class="hidden">
-      <div class="lotr-box">
-        <img src="./assets/Images/sauron.png" class="sauron-img" />
-        <div class="lotr-content">
-          <h2 class="lotr-text">Then it has all been in vain.</h2>
-          <h2 class="lotr-text">The fellowship has failed.</h2>
-          <button onclick="resetGame()">Try Again</button>
+            <div class="life">
+              <img src="./assets/Images/samwise.jpg" />
+            </div>
+          </section>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!--  Winners pop up -->
-    <section id="lotrWin" class="hidden">
-      <div class="lotr-box">
-        <img src="./assets/Images/Aragorn.png" class="aragorn-img" />
-        <div class="lotr-content">
-          <p class="lotr-text">Hobbit of keen wit and quiet skill,</p>
-          <p class="lotr-text">you have mastered the hidden arts of CSS.</p>
-          <h2 class="lotr-text">From this day forth, know this:</h2>
-          <div class="lotr-hero-line">You bow to no one.</div>
-          <button onclick="resetGame()">Play Again</button>
+      <!--  SAURON Wins fellowship loses pop-up window -->
+      <section id="lotrGameOver" class="hidden">
+        <div class="lotr-box">
+          <img src="./assets/Images/sauron.png" class="sauron-img" />
+          <div class="lotr-content">
+            <h2 class="lotr-text">Then it has all been in vain.</h2>
+            <h2 class="lotr-text">The fellowship has failed.</h2>
+            <button onclick="resetGame()">Try Again</button>
+          </div>
         </div>
-      </div>
-    </section>
-
+      </section>
+      <!--  Winners pop up -->
+      <section id="lotrWin" class="hidden">
+        <div class="lotr-box">
+          <img src="./assets/Images/Aragorn.png" class="aragorn-img" />
+          <div class="lotr-content">
+            <p class="lotr-text">Hobbit of keen wit and quiet skill,</p>
+            <p class="lotr-text">you have mastered the hidden arts of CSS.</p>
+            <h2 class="lotr-text">From this day forth, know this:</h2>
+            <div class="lotr-hero-line">You bow to no one.</div>
+            <button onclick="resetGame()">Play Again</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div id="warningText" class="hidden"></div>
+    </footer>
     <audio id="bgMusic" loop></audio>
     <audio id="effectMusic"></audio>
     <script src="script.js"></script>
