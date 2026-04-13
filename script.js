@@ -429,25 +429,24 @@ function showWin() {
 }
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
-    // if screen is blocked
+    /* 🔇 ვიმახსოვრებთ იყო თუ არა ჩართული */
+    wasPlayingBeforeHide = !bgMusic.paused;
+
     bgMusic.pause();
     effectMusic.pause();
   } else {
+    /* 🔓 დაბრუნდა */
+
     const isGameOverVisible = !document.getElementById("lotrGameOver").classList.contains("hidden");
+
     const isWinVisible = !document.getElementById("lotrWin").classList.contains("hidden");
 
-    //  popo-up visibility condition
     if (isGameOverVisible || isWinVisible) return;
 
-    // resume from correct music based on game state
-    if (!hasSwitchedToBattle) {
-      bgMusic.src = "assets/Audios/ambient.mp3";
-    } else {
-      bgMusic.src = "assets/Audios/battle.mp3";
+    /* 🎧 მხოლოდ თუ ადრე უკრავდა */
+    if (wasPlayingBeforeHide) {
+      bgMusic.play().catch(() => {});
     }
-
-    bgMusic.currentTime = 0;
-    bgMusic.play().catch(() => {});
   }
 });
 // Game starting
