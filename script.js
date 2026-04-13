@@ -429,21 +429,19 @@ function showWin() {
 }
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
-    /* 🔇 ვიმახსოვრებთ იყო თუ არა ჩართული */
+    // if music was playing before hiding, we want to resume it when the user comes back
     wasPlayingBeforeHide = !bgMusic.paused;
 
     bgMusic.pause();
     effectMusic.pause();
   } else {
-    /* 🔓 დაბრუნდა */
-
     const isGameOverVisible = !document.getElementById("lotrGameOver").classList.contains("hidden");
 
     const isWinVisible = !document.getElementById("lotrWin").classList.contains("hidden");
 
     if (isGameOverVisible || isWinVisible) return;
 
-    /* 🎧 მხოლოდ თუ ადრე უკრავდა */
+    // if music was playing before hiding, we want to resume it when the user comes back
     if (wasPlayingBeforeHide) {
       bgMusic.play().catch(() => {});
     }
