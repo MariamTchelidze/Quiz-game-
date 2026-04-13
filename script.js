@@ -123,155 +123,195 @@ function highlightLevel(index) {
 }
 // 25 Question:
 const questions = [
+  // 1
   {
     code: "<h1>Hello</h2>",
-    question: "What is wrong?",
-    options: ["Wrong closing tag", "Missing attribute", "Wrong element", "Nothing"],
-    answer: 0,
+    question: "Why is this HTML code incorrect?",
+    options: ["Missing attribute", "Wrong closing tag", "Wrong element", "Nothing"],
+    answer: 1,
   },
+  // 2
   {
     code: "<p>Paragraph",
-    question: "What is wrong?",
-    options: ["Missing closing tag", "Wrong tag", "Missing class", "Nothing"],
-    answer: 0,
+    question: "Why is this HTML code incomplete?",
+    options: ["Wrong tag", "Missing class", "Nothing", "Missing closing tag"],
+    answer: 3,
   },
+  // 3
   {
     code: "<img src='img.png'>",
-    question: "What is missing?",
-    options: ["alt attribute", "class", "width", "Nothing"],
-    answer: 0,
+    question: "What important attribute is missing for accessibility?",
+    options: ["class", "width", "alt attribute", "Nothing"],
+    answer: 2,
   },
+  // 4
   {
     code: "<ul><li>Item<li></ul>",
-    question: "What is wrong?",
-    options: ["Missing closing li tag", "Wrong list", "Wrong HTML", "Nothing"],
-    answer: 0,
+    question: "Why is this HTML list incorrect?",
+    options: ["Wrong list type", "Invalid HTML structure", "Missing closing </li> tag", "Nothing"],
+    answer: 2,
   },
+  // 5
   {
     code: "<button>Click</buton>",
-    question: "What is wrong?",
-    options: ["Typo", "Missing id", "Wrong text", "Nothing"],
-    answer: 0,
+    question: "Why is this HTML code incorrect?",
+    options: ["Missing id", "Wrong text", "Typo in closing tag", "Nothing"],
+    answer: 2,
   },
+  // 6
   {
     code: "<input></input>",
-    question: "What is wrong?",
-    options: ["Should not close", "Wrong type", "Missing name", "Nothing"],
-    answer: 0,
+    question: "Why is this HTML input element incorrect?",
+    options: ["Wrong type", "Input is a void element and should not have a closing tag", "Missing name", "Nothing"],
+    answer: 1,
   },
+  // 7
   {
     code: "<a href='link'>Go",
-    question: "What is wrong?",
-    options: ["Missing closing tag", "Wrong href", "Missing target", "Nothing"],
-    answer: 0,
+    question: "Why is this HTML link incomplete?",
+    options: ["Wrong href", "Missing target", "Nothing", "Missing closing tag"],
+    answer: 3,
   },
+  // 8
   {
     code: "<div><p></div></p>",
-    question: "What is wrong?",
-    options: ["Wrong nesting", "Missing class", "Wrong tag", "Nothing"],
-    answer: 0,
+    question: "Why is this HTML structure incorrect?",
+    options: ["Missing class", "Wrong tag", "Wrong nesting", "Nothing"],
+    answer: 2,
   },
+  // 9
   {
     code: "h1 { color red; }",
-    question: "What is wrong?",
-    options: ["Missing colon", "Wrong color", "Wrong selector", "Nothing"],
-    answer: 0,
+    question: "Why is this CSS rule incorrect?",
+    options: ["Wrong color", "Wrong selector", "Missing colon", "Nothing"],
+    answer: 2,
   },
+  // 10
   {
     code: ".box { margin:10px padding:5px; }",
-    question: "What is wrong?",
-    options: ["Missing semicolon", "Wrong unit", "Wrong selector", "Nothing"],
-    answer: 0,
+    question: "Why is this CSS not working correctly?",
+    options: ["Wrong unit", "Missing semicolon", "Wrong selector", "Nothing"],
+    answer: 1,
   },
+  // 11
   {
     code: ".container { justify-content:center; }",
-    question: "Why no effect?",
-    options: ["Needs flex", "Wrong property", "Missing padding", "Nothing"],
-    answer: 0,
+    question: "Why doesn't justify-content work here?",
+    options: ["Wrong property", "Missing padding", "Needs display: flex", "Nothing"],
+    answer: 2,
   },
+  // 12
   {
     code: "p { font-size:20 }",
-    question: "What is wrong?",
-    options: ["Missing unit", "Wrong selector", "Wrong property", "Nothing"],
-    answer: 0,
+    question: "Why doesn't the font size work?",
+    options: ["Wrong selector", "Wrong property", "Missing unit", "Nothing"],
+    answer: 2,
   },
+  // 13
   {
     code: ".box { width:100px; width:200px; }",
-    question: "Issue?",
-    options: ["Override", "Wrong unit", "Missing height", "Nothing"],
-    answer: 0,
+    question: "What will be the final width of the element?",
+    options: ["100px", "200px", "Both apply", "It will not work"],
+    answer: 1,
   },
+  // 14
   {
     code: "p { color:#zzzzzz }",
-    question: "What is wrong?",
-    options: ["Invalid color", "Missing px", "Wrong selector", "Nothing"],
-    answer: 0,
+    question: "Why is this color value not working?",
+    options: ["Missing px", "Invalid color", "Wrong selector", "Nothing"],
+    answer: 1,
   },
+  // 15
   {
     code: ".container { display:flex; align-item:center; }",
-    question: "What is wrong?",
-    options: ["Typo", "Missing value", "Wrong selector", "Nothing"],
-    answer: 0,
+    question: "Why doesn't the alignment work in this flex container?",
+    options: ["Missing value", "Wrong selector", "Typo in property name", "Nothing"],
+    answer: 2,
   },
+  // 16
   {
     code: ".box { display:block; justify-content:center; }",
-    question: "Why no work?",
-    options: ["Needs flex", "Wrong property", "Missing padding", "Nothing"],
+    question: "Why doesn't justify-content work in this code?",
+    options: ["Needs display: flex", "Wrong property", "Missing padding", "Nothing"],
     answer: 0,
   },
+  // 17
   {
-    code: ".item { position:absolute; }",
-    question: "Missing?",
-    options: ["Parent position", "Wrong property", "Missing width", "Nothing"],
+    code: ".item { position: absolute; }",
+    question: "What determines where this element is positioned?",
+    options: ["Nearest positioned parent", "Viewport only", "Width of element", "Nothing"],
     answer: 0,
   },
+  // 18
   {
-    code: ".box { width:100%; padding:20px; }",
-    question: "Why overflow?",
-    options: ["Box-sizing", "Wrong width", "Missing margin", "Nothing"],
-    answer: 0,
+    code: "* { margin: 0; padding: 0; box-sizing: border-box; }",
+    question: "What does box-sizing: border-box mean?",
+    options: [
+      "Padding is added outside the width",
+      "Width ignores padding",
+      "It centers the element",
+      "Padding is included in the element's width",
+    ],
+    answer: 3,
   },
-  {
-    code: ".container { display:flex } .item { width:100% }",
-    question: "Issue?",
-    options: ["Flex overflow", "Wrong display", "Missing padding", "Nothing"],
-    answer: 0,
-  },
+  // 19
   {
     code: ".hidden { display:none } <div class='Hidden'>",
-    question: "Why visible?",
-    options: ["Case mismatch", "Wrong property", "Missing id", "Nothing"],
-    answer: 0,
+    question: "Why is the container still visible?",
+    options: ["Wrong property", "Case mismatch", "Missing id", "Nothing"],
+    answer: 1,
   },
+  // 20
   {
-    code: ".box { z-index:10 }",
-    question: "Why no work?",
-    options: ["Needs position", "Wrong value", "Missing px", "Nothing"],
+    code: ":root { --main-color: blue; } .text { color: var(main-color); }",
+    question: "Why doesn't the color apply?",
+    options: ["Wrong selector", "Variable must be inside .text", "Missing -- in var()", "Nothing"],
+    answer: 2,
+  },
+  // 21
+  {
+    code: "* { margin: 0; padding: 0; box-sizing: border-box; }",
+    question: "What does * mean in this context?",
+    options: [
+      "Universal selector (selects all elements)",
+      "Selects only div elements",
+      "Selects elements with class *",
+      "Selects the body element only",
+    ],
     answer: 0,
   },
+  // 22
   {
     code: ".btn:hover { color:red }",
-    question: "Issue?",
-    options: ["Only hover", "Wrong color", "Missing px", "Nothing"],
-    answer: 0,
+    question: "When will the text turn red?",
+    options: ["Always", "On hover", "On click", "Never"],
+    answer: 1,
   },
+  // 23
   {
     code: ".container { display:flex } .child { margin:auto }",
-    question: "Result?",
-    options: ["Centers element", "Wrong selector", "Missing padding", "Nothing"],
-    answer: 0,
+    question: "What happens to the child element inside this flex container?",
+    options: [
+      "It moves to the left side",
+      "It stretches to full width",
+      "It is centered inside the container",
+      "Nothing changes",
+    ],
+    answer: 2,
   },
+  // 24
   {
-    code: ".box { height:100% }",
-    question: "Why no height?",
-    options: ["Parent no height", "Wrong property", "Missing px", "Nothing"],
-    answer: 0,
+    code: ".container { } .box { height: 100%; }",
+    question: "What is missing for height: 100% to work?",
+    options: ["Display flex", "Parent needs height", "Padding", "Nothing"],
+    answer: 1,
   },
+  // 25
   {
-    code: ".text { overflow:hidden }",
-    question: "What happens?",
-    options: ["Content cut", "Wrong property", "Missing padding", "Nothing"],
-    answer: 0,
+    code: ".text { overflow: hidden; }",
+    question: "What happens if the content is bigger than the container?",
+    options: ["Content becomes scrollable", "Nothing changes", "Content moves outside", "Content is cut off"],
+    answer: 3,
   },
 ];
 
